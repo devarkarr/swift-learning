@@ -13,6 +13,7 @@ let gradientColors: [Color] = [
 ]
 
 struct ContentView: View {
+    
     var body: some View {
 //        HStack {
 //            DayForecast(day: "Mon",isRainy: false, high: 70,low:50)
@@ -21,6 +22,7 @@ struct ContentView: View {
         TabView {
             WelcomePage()
             FeaturesPage()
+            DiceViewPage()
         }
         .background(Gradient(colors: gradientColors))
         .tabViewStyle(.page)

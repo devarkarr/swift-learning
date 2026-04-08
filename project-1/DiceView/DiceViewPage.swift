@@ -8,8 +8,46 @@
 import SwiftUI
 
 struct DiceViewPage: View {
+    @State private var numberOfDice: Int = 1
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Dice Roller").font(.largeTitle.lowercaseSmallCaps())
+                .foregroundStyle(.white)
+            
+            HStack {
+                ForEach(1...numberOfDice, id: \.description) { _ in
+                    DiceView()
+                }
+            }
+            
+            HStack {
+                Button("Remove Dice",systemImage:"minus.circle.fill"){
+                    withAnimation {
+                        numberOfDice -= 1
+                    }
+                    
+                }
+                .font(.largeTitle)
+                .disabled(numberOfDice == 1)
+
+                
+                Button("Add Dice",systemImage: "plus.circle.fill"){
+                    withAnimation {
+                        numberOfDice += 1
+                    }
+                }
+                .font(.largeTitle)
+                .disabled(numberOfDice == 5)
+
+            }.padding()
+                .labelStyle(.iconOnly)
+            
+        }.padding()
+            .frame(maxWidth:.infinity,maxHeight: .infinity)
+//            .background(.appBackground)
+            .tint(.white)
+    
     }
 }
 
